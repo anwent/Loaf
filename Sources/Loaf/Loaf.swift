@@ -232,6 +232,7 @@ final class LoafViewController: UIViewController {
     var font = UIFont.systemFont(ofSize: 14, weight: .medium)
     var textAlignment: NSTextAlignment = .left
     var transDelegate: UIViewControllerTransitioningDelegate
+    var backgroundView = UIView()
     weak var delegate: LoafDelegate?
     
     init(_ toast: Loaf) {
@@ -253,8 +254,21 @@ final class LoafViewController: UIViewController {
             }
         }
         
+//        let height = max(toast.message.heightWithConstrainedWidth(width: 240, font: font) + 12, 40)
+//        preferredContentSize = CGSize(width: width ?? 280, height: height)
+        let offset: CGFloat = 10
         let height = max(toast.message.heightWithConstrainedWidth(width: 240, font: font) + 12, 40)
-        preferredContentSize = CGSize(width: width ?? 280, height: height)
+        backgroundView.frame = CGRect(x: 5, y: 5, width: width ?? 270, height: height)
+        view.backgroundColor = .clear
+        backgroundView.layer.masksToBounds = false
+        backgroundView.backgroundColor = .white
+        backgroundView.layer.shadowRadius = 3
+        backgroundView.layer.shadowOpacity = 0.3
+        backgroundView.layer.shadowColor = UIColor.black.cgColor
+        backgroundView.layer.shadowOffset = CGSize(width: 2, height: 2)
+        backgroundView.layer.cornerRadius = 5
+        view.insertSubview(backgroundView, at: 0)
+        preferredContentSize = CGSize(width: (width ?? 280) + offset, height: height + offset)
     }
     
     required init?(coder aDecoder: NSCoder) {
