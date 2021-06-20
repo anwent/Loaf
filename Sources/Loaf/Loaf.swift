@@ -62,7 +62,7 @@ final public class Loaf {
             tintColor: UIColor = .white,
             font: UIFont = .systemFont(ofSize: 14),
             icon: UIImage? = Icon.info,
-            textAlignment: NSTextAlignment = .left,
+            textAlignment: NSTextAlignment = .center,
             iconAlignment: IconAlignment = .left,
             width: Width = .fixed(280)) {
             self.backgroundColor = backgroundColor
@@ -230,7 +230,7 @@ open class LoafViewController: UIViewController {
     let label = UILabel()
     let imageView = UIImageView(image: nil)
     var font = UIFont.systemFont(ofSize: 14)
-    var textAlignment: NSTextAlignment = .left
+    var textAlignment: NSTextAlignment = .center
     var transDelegate: UIViewControllerTransitioningDelegate
     var backgroundView = UIView()
     weak var delegate: LoafDelegate?
@@ -350,8 +350,8 @@ open class LoafViewController: UIViewController {
                     imageView.heightAnchor.constraint(equalToConstant: 28),
                     imageView.widthAnchor.constraint(equalToConstant: 28),
                     
-                    label.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: 10),
-                    label.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -4),
+                    label.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
+                    label.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
                     label.topAnchor.constraint(equalTo: view.topAnchor),
                     label.bottomAnchor.constraint(equalTo: view.bottomAnchor)
                 ])
@@ -363,7 +363,7 @@ open class LoafViewController: UIViewController {
                     imageView.widthAnchor.constraint(equalToConstant: 28),
                     
                     label.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
-                    label.trailingAnchor.constraint(equalTo: imageView.leadingAnchor, constant: -4),
+                    label.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
                     label.topAnchor.constraint(equalTo: view.topAnchor),
                     label.bottomAnchor.constraint(equalTo: view.bottomAnchor)
                 ])
