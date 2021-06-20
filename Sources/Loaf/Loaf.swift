@@ -60,7 +60,7 @@ final public class Loaf {
             backgroundColor: UIColor,
             textColor: UIColor = .white,
             tintColor: UIColor = .white,
-            font: UIFont = .systemFont(ofSize: 14, weight: .medium),
+            font: UIFont = .systemFont(ofSize: 14),
             icon: UIImage? = Icon.info,
             textAlignment: NSTextAlignment = .left,
             iconAlignment: IconAlignment = .left,
@@ -224,12 +224,12 @@ protocol LoafDelegate: AnyObject {
     func loafDidDismiss()
 }
 
-final class LoafViewController: UIViewController {
+open class LoafViewController: UIViewController {
     var loaf: Loaf
     
     let label = UILabel()
     let imageView = UIImageView(image: nil)
-    var font = UIFont.systemFont(ofSize: 14, weight: .medium)
+    var font = UIFont.systemFont(ofSize: 14)
     var textAlignment: NSTextAlignment = .left
     var transDelegate: UIViewControllerTransitioningDelegate
     var backgroundView = UIView()
@@ -258,7 +258,7 @@ final class LoafViewController: UIViewController {
         //        preferredContentSize = CGSize(width: width ?? 280, height: height)
 
         let offset: CGFloat = 10
-        let height = max(toast.message.heightWithConstrainedWidth(width: 240, font: font) + 12, 40)
+        let height = max(toast.message.heightWithConstrainedWidth(width: 240, font: font) + 12, 35)
         backgroundView.frame = CGRect(x: 5, y: 5, width: width ?? 270, height: height)
         view.backgroundColor = .clear
         backgroundView.layer.masksToBounds = false
@@ -266,17 +266,17 @@ final class LoafViewController: UIViewController {
         backgroundView.layer.shadowRadius = 4
         backgroundView.layer.shadowOpacity = 0.3
         backgroundView.layer.shadowColor = UIColor.lightGray.cgColor
-        backgroundView.layer.shadowOffset = CGSize(width: 0, height: 3)
+        backgroundView.layer.shadowOffset = CGSize(width: 2, height: 5)
         backgroundView.layer.cornerRadius = 5
         view.insertSubview(backgroundView, at: 0)
         preferredContentSize = CGSize(width: (width ?? 280) + offset, height: height + offset)
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func viewDidLoad() {
+    open override func viewDidLoad() {
         super.viewDidLoad()
         
         label.text = loaf.message
