@@ -81,6 +81,7 @@
 				84DA601A234329880088680A /* Extensions.swift */,
 				84DA601B234329880088680A /* Icons.swift */,
 				84DA601C234329880088680A /* Loaf.swift */,
+				F2E9D3B05ECEACF01A01EA86 /* Notification */,
 			);
 			path = Loaf;
 			sourceTree = "<group>";
@@ -93,6 +94,13 @@
 				84DA6019234329880088680A /* Animator.swift */,
 			);
 			path = Presenter;
+			sourceTree = "<group>";
+		};
+		F2E9D3B05ECEACF01A01EA86 /* Notification */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Notification;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
